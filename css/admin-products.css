@@ -1,0 +1,457 @@
+/* ==========================================
+   GAMEVAULT ADMIN — PRODUCTS PAGE
+   Product-specific styles ONLY
+========================================== */
+
+
+/* ==========================================
+   PRODUCT GROUPS
+========================================== */
+
+.admin-product-groups {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+
+/* ==========================================
+   GAME BLOCK
+========================================== */
+
+.admin-product-game {
+    width: 100%;
+}
+
+.admin-product-game-header {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin-bottom: 14px;
+    padding: 14px 18px;
+
+    border-radius: 8px;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.admin-product-game-header span {
+    margin-left: 8px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    opacity: 0.6;
+}
+
+
+/* ==========================================
+   PRODUCT CATEGORY
+========================================== */
+
+.admin-product-category {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin-bottom: 22px;
+}
+
+.admin-product-category:last-child {
+    margin-bottom: 0;
+}
+
+.admin-product-category-title {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 4px 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.admin-product-category-title span:last-child {
+    font-size: 12px;
+    font-weight: 500;
+
+    opacity: 0.55;
+}
+
+
+/* ==========================================
+   PRODUCT TABLE
+========================================== */
+
+.admin-product-category .admin-table-card {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.admin-product-category .admin-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.admin-product-category .admin-table {
+    width: 100%;
+    min-width: 700px;
+
+    table-layout: fixed;
+}
+
+
+/* ==========================================
+   TABLE COLUMNS
+========================================== */
+
+.admin-product-category .admin-table th:nth-child(1),
+.admin-product-category .admin-table td:nth-child(1) {
+    width: 28%;
+}
+
+.admin-product-category .admin-table th:nth-child(2),
+.admin-product-category .admin-table td:nth-child(2) {
+    width: 14%;
+}
+
+.admin-product-category .admin-table th:nth-child(3),
+.admin-product-category .admin-table td:nth-child(3) {
+    width: 14%;
+}
+
+.admin-product-category .admin-table th:nth-child(4),
+.admin-product-category .admin-table td:nth-child(4) {
+    width: 12%;
+}
+
+.admin-product-category .admin-table th:nth-child(5),
+.admin-product-category .admin-table td:nth-child(5) {
+    width: 17%;
+}
+
+.admin-product-category .admin-table th:nth-child(6),
+.admin-product-category .admin-table td:nth-child(6) {
+    width: 15%;
+}
+
+
+/* ==========================================
+   PRODUCT NAME
+========================================== */
+
+.admin-product-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 0;
+}
+
+.admin-product-name-text {
+    min-width: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-product-name-text strong {
+    display: block;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   AMOUNT
+========================================== */
+
+.admin-product-amount {
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   PRICE
+========================================== */
+
+.admin-product-price {
+    font-weight: 600;
+}
+
+.admin-product-deal-price {
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   PRODUCT STATUS
+========================================== */
+
+.admin-product-status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.admin-product-status > span.active {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    background: none !important;
+    border: none !important;
+    color: #16a34a !important;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.admin-product-status > span.inactive {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    background: none !important;
+    border: none !important;
+    color: #dc2626 !important;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Deal / Pinned */
+
+.admin-product-status > span.badge {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    background: none !important;
+    border: none !important;
+    color: #94a3b8 !important;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.admin-product-status > span.badge::before {
+    content: "•";
+    margin-right: 5px;
+    color: #94a3b8;
+}
+
+
+/* ==========================================
+   ACTION AREA
+========================================== */
+
+.admin-product-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 8px;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   ACTION BUTTON BASE
+========================================== */
+
+.admin-product-actions button[data-edit-product],
+.admin-product-actions button[data-delete-product] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 64px;
+    height: 34px;
+
+    box-sizing: border-box;
+
+    padding: 0 12px;
+
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+/* ==========================================
+   EDIT — BLUE
+========================================== */
+
+.admin-product-actions button[data-edit-product] {
+    background: #2563eb !important;
+    border: 1px solid #2563eb !important;
+
+    color: #ffffff !important;
+}
+
+.admin-product-actions button[data-edit-product]:hover {
+    background: #1d4ed8 !important;
+    border-color: #1d4ed8 !important;
+
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+}
+
+.admin-product-actions button[data-edit-product]:active {
+    background: #1e40af !important;
+    border-color: #1e40af !important;
+
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   DELETE — RED
+========================================== */
+
+.admin-product-actions button[data-delete-product] {
+    background: #dc2626 !important;
+    border: 1px solid #dc2626 !important;
+
+    color: #ffffff !important;
+}
+
+.admin-product-actions button[data-delete-product]:hover {
+    background: #b91c1c !important;
+    border-color: #b91c1c !important;
+
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+}
+
+.admin-product-actions button[data-delete-product]:active {
+    background: #991b1b !important;
+    border-color: #991b1b !important;
+
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   EMPTY CATEGORY
+========================================== */
+
+.admin-product-empty {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 24px;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   MODAL CANCEL BUTTON
+========================================== */
+
+#cancelProduct {
+    min-width: 100px;
+    height: 40px;
+
+    box-sizing: border-box;
+
+    padding: 0 18px;
+
+    border-radius: 7px;
+
+    background: #f3f4f6 !important;
+    border: 1px solid #d1d5db !important;
+
+    color: #374151 !important;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+#cancelProduct:hover {
+    background: #e5e7eb !important;
+    border-color: #9ca3af !important;
+
+    color: #111827 !important;
+
+    transform: translateY(-1px);
+}
+
+#cancelProduct:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+
+    .admin-product-category .admin-table {
+        min-width: 700px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .admin-product-game-header {
+        padding: 12px 14px;
+    }
+
+    .admin-product-category-title {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    .admin-product-actions {
+        gap: 6px;
+    }
+
+    .admin-product-actions button[data-edit-product],
+    .admin-product-actions button[data-delete-product] {
+        min-width: 60px;
+        padding: 0 10px;
+    }
+
+    .admin-product-status {
+        min-width: 68px;
+        padding: 0 9px;
+    }
+
+}

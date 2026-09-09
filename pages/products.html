@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Products — PROJOYSTICK</title>
+
+    <!-- MAIN ADMIN CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/admin.css?v=20260901"
+    >
+
+    <!-- PRODUCTS PAGE CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/admin-products.css?v=20260901"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         ADMIN NAVBAR
+    =========================================== -->
+
+    <header class="admin-navbar">
+
+        <a
+            href="../index.html"
+            class="admin-logo"
+        >
+            <span>◆</span>
+            PRO<span>JOYSTICK</span>
+            <small>ADMIN</small>
+        </a>
+
+
+        <div class="admin-nav-right">
+
+            <span id="adminUsername">
+                Loading...
+            </span>
+
+            <button
+                type="button"
+                id="adminLogout"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         ADMIN LAYOUT
+    =========================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- ======================================
+             SIDEBAR
+        ======================================= -->
+
+        <aside class="admin-sidebar">
+
+
+            <a
+                href="../index.html"
+                class="admin-menu"
+            >
+                <span>▦</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="/pages/games.html"
+                class="admin-menu"
+            >
+                <span>🎮</span>
+                <span>Games</span>
+            </a>
+
+
+            <a
+                href="/pages/products.html"
+                class="admin-menu active"
+                aria-current="page"
+            >
+                <span>◈</span>
+                <span>Products</span>
+            </a>
+
+
+            <a
+                href="/pages/orders.html"
+                class="admin-menu"
+            >
+                <span>📦</span>
+                <span>Orders</span>
+            </a>
+
+
+            <a
+                href="/pages/users.html"
+                class="admin-menu"
+            >
+                <span>👥</span>
+                <span>Users</span>
+            </a>
+
+            <a
+                href="./coins.html"
+                class="admin-menu"
+                aria-current="page"
+            >
+
+                <span>🪙</span>
+
+                <span>
+                    Fast Coins
+                </span>
+
+            </a>
+
+
+            <div class="admin-sidebar-divider"></div>
+
+
+            <a
+                href="../index.html"
+                class="admin-menu"
+            >
+                <span>↗</span>
+                <span>View Store</span>
+            </a>
+
+
+        </aside>
+
+
+
+        <!-- ======================================
+             MAIN CONTENT
+        ======================================= -->
+
+        <main class="admin-main">
+
+
+            <section
+                class="admin-section active"
+                id="productsSection"
+            >
+
+
+                <!-- HEADER -->
+
+                <div class="admin-section-header">
+
+                    <button
+                        type="button"
+                        id="addProductBtn"
+                        class="admin-primary-btn"
+                    >
+                        + Add Product
+                    </button>
+
+                </div>
+
+                <div class="admin-product-filter">
+
+                        <label for="productGameFilter">
+                            Game
+                        </label>
+
+                        <select id="productGameFilter">
+                            <option value="all">
+                                All Games
+                            </option>
+                        </select>
+
+                    </div>
+
+
+
+                <!-- PRODUCT TABLE -->
+
+                <div class="admin-panel">
+
+
+                    <div
+                        id="productsLoading"
+                        class="admin-loading"
+                        style="display:none;"
+                    >
+                        Loading products...
+                    </div>
+
+                    <div
+                        id="productsTableGroups"
+                        class="admin-product-groups"
+                    ></div>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ==========================================
+         PRODUCT MODAL
+    =========================================== -->
+
+    <div
+        id="productModal"
+        class="admin-modal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="admin-modal-content product-modal-content"
+        >
+
+
+            <!-- MODAL HEADER -->
+
+            <div class="admin-modal-header">
+
+                <div>
+
+                    <h2 id="productModalTitle">
+                        Add Product
+                    </h2>
+
+                    <p>
+                        Configure the product and its availability.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="closeProductModal"
+                    class="admin-modal-close"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- PRODUCT FORM -->
+
+            <form
+                id="productForm"
+                class="admin-form"
+            >
+
+
+                <input
+                    type="hidden"
+                    id="productId"
+                    value=""
+                >
+
+
+                <!-- ==================================
+                     BASIC INFORMATION
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <h3>
+                            Product Information
+                        </h3>
+
+                        <p>
+                            Configure the product details.
+                        </p>
+
+                    </div>
+
+
+                    <!-- PRODUCT NAME -->
+
+                    <div class="admin-form-group">
+
+                        <label for="productName">
+                            Product Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productName"
+                            name="productName"
+                            placeholder="e.g. 2060 VP"
+                            autocomplete="off"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- GAME -->
+
+                    <div class="admin-form-group">
+
+                        <label for="productGame">
+                            Game
+                        </label>
+
+                        <select
+                            id="productGame"
+                            name="productGame"
+                            required
+                        >
+
+                            <option value="">
+                                Select Game
+                            </option>
+
+                        </select>
+
+                        <small>
+                            Select a game from the available games.
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- TYPE -->
+
+                    <div class="admin-form-group">
+
+                        <label for="productType">
+                            Type
+                        </label>
+
+                        <select
+                            id="productType"
+                            name="productType"
+                            required
+                        >
+
+                            <option value="">
+                                Select Type
+                            </option>
+
+                            <option value="currency">
+                                Currency
+                            </option>
+
+                            <option value="product">
+                                Product
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- AMOUNT -->
+
+                    <div class="admin-form-group">
+
+                        <label for="productAmount">
+                            Amount
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productAmount"
+                            name="productAmount"
+                            placeholder="e.g. 2060"
+                            autocomplete="off"
+                        >
+
+                        <small>
+                            Amount of currency or quantity represented by the product.
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- IMAGE -->
+
+                    <div class="admin-form-group">
+
+                        <label for="productImage">
+                            Image ID
+                        </label>
+
+                        <input
+                            type="url"
+                            id="productImage"
+                            name="productImage"
+                            placeholder="https://example.com/image.jpg"
+                            autocomplete="off"
+                        >
+
+                        <small>
+                            Enter the direct image link.
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     PRICE & STOCK
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <h3>
+                            Price & Stock
+                        </h3>
+
+                        <p>
+                            Set the normal price, deal price and available stock.
+                        </p>
+
+                    </div>
+
+
+                    <!-- PRICE -->
+
+                    <div class="admin-form-group">
+
+                        <label for="productPrice">
+                            Price
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productPrice"
+                            name="productPrice"
+                            placeholder="e.g. 1600"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- DEAL PRICE -->
+
+                    <div class="admin-form-group">
+
+                        <label for="productDealPrice">
+                            Deal Price
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productDealPrice"
+                            name="productDealPrice"
+                            placeholder="e.g. 1200"
+                            min="0"
+                            step="0.01"
+                        >
+
+                        <small>
+                            Used when Deal is enabled.
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- STOCK -->
+
+                    <div class="admin-form-group">
+
+                        <label for="productStock">
+                            Stock Amount
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productStock"
+                            name="productStock"
+                            placeholder="e.g. 13"
+                            min="0"
+                            step="1"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     PRODUCT SETTINGS
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <h3>
+                            Product Settings
+                        </h3>
+
+                        <p>
+                            Control how this product appears on PROJOYSTICK.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- DEAL -->
+
+                    <label class="admin-checkbox-row">
+
+                        <input
+                            type="checkbox"
+                            id="productDeal"
+                            name="productDeal"
+                        >
+
+                        <span>
+
+                            <strong>
+                                Deal
+                            </strong>
+
+                            <small>
+                                Set Deal to true and use the Deal Price.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+
+                    <!-- PINNED -->
+
+                    <label class="admin-checkbox-row">
+
+                        <input
+                            type="checkbox"
+                            id="productPinned"
+                            name="productPinned"
+                        >
+
+                        <span>
+
+                            <strong>
+                                Pinned
+                            </strong>
+
+                            <small>
+                                Set Pinned to true to feature this product or show it on the home page.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+
+                    <!-- ACTIVE -->
+
+                    <label class="admin-checkbox-row">
+
+                        <input
+                            type="checkbox"
+                            id="productActive"
+                            name="productActive"
+                            checked
+                        >
+
+                        <span>
+
+                            <strong>
+                                Active
+                            </strong>
+
+                            <small>
+                                Customers can see and purchase this product.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     FORM ACTIONS
+                =================================== -->
+
+                <div class="admin-modal-footer">
+
+                    <button
+                        type="button"
+                        id="cancelProduct"
+                        class="admin-secondary-btn"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        id="saveProductBtn"
+                        class="admin-primary-btn"
+                    >
+                        Save Product
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         ADMIN AUTH
+    =========================================== -->
+
+    <script
+        type="module"
+        src="../js/admin-auth.js?v=20260901"
+    ></script>
+
+
+    <!-- ==========================================
+         PRODUCTS JAVASCRIPT
+    =========================================== -->
+
+    <script
+        type="module"
+        src="../js/admin-products.js?v=20260901"
+    ></script>
+
+
+</body>
+
+</html>

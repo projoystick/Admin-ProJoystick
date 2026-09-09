@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Fast Coins — PROJOYSTICK Admin</title>
+
+
+<!-- ==========================================
+     ADMIN SHARED CSS
+=========================================== -->
+
+<link
+    rel="stylesheet"
+    href="../../css/admin.css"
+>
+
+<link
+    rel="stylesheet"
+    href="../../css/coins.css"
+>
+
+
+</head>
+
+<body>
+
+
+<!-- ==========================================
+     ADMIN NAVBAR
+=========================================== -->
+
+<header class="admin-navbar">
+
+    <a
+        href="../admin.html"
+        class="admin-logo"
+        aria-label="PROJOYSTICK Admin Dashboard"
+    >
+
+        <span>◆</span>
+
+        PRO<span>JOYSTICK</span>
+
+        <small>
+            ADMIN
+        </small>
+
+    </a>
+
+
+    <div class="admin-nav-right">
+
+        <span id="adminUsername">
+            Loading...
+        </span>
+
+        <button
+            type="button"
+            id="adminLogout"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==========================================
+         ADMIN LAYOUT
+    =========================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- ======================================
+             SIDEBAR
+        ======================================= -->
+
+        <aside class="admin-sidebar">
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="../index.html"
+                class="admin-menu"
+            >
+                <span>▦</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <!-- GAMES -->
+
+            <a
+                href="./games.html"
+                class="admin-menu"
+            >
+                <span>🎮</span>
+                <span>Games</span>
+            </a>
+
+
+            <!-- PRODUCTS -->
+
+            <a
+                href="./products.html"
+                class="admin-menu"
+            >
+                <span>◈</span>
+                <span>Products</span>
+            </a>
+
+
+            <!-- ORDERS -->
+
+            <a
+                href="./orders.html"
+                class="admin-menu"
+            >
+                <span>📦</span>
+                <span>Orders</span>
+            </a>
+
+
+            <!-- USERS -->
+
+            <a
+                href="./users.html"
+                class="admin-menu"
+            >
+                <span>👥</span>
+                <span>Users</span>
+            </a>
+
+            <a
+                href="./coins.html"
+                class="admin-menu active"
+                aria-current="page"
+            >
+
+                <span>🪙</span>
+
+                <span>
+                    Fast Coins
+                </span>
+
+            </a>
+
+
+            <div class="admin-sidebar-divider"></div>
+
+
+            <!-- STORE -->
+
+            <a
+                href="../../index.html"
+                class="admin-menu"
+            >
+                <span>↗</span>
+                <span>View Store</span>
+            </a>
+
+
+        </aside>
+
+
+
+    <!-- ======================================
+         MAIN CONTENT
+    ======================================= -->
+
+    <main class="admin-main">
+
+
+        <section class="admin-section active">
+
+
+            <!-- ==================================
+                 PAGE HEADER
+            =================================== -->
+
+            <div class="admin-section-header">
+
+                <div>
+
+                    <span class="admin-label">
+                        PROJOYSTICK
+                    </span>
+
+                    <h1>
+                        Fast Coins
+                    </h1>
+
+                    <p>
+                        Manage Fast Coins settings and
+                        promotional rewards.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 COIN SETTINGS CARD
+            =================================== -->
+
+            <div class="admin-panel coin-settings-card">
+
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span class="admin-label">
+                            SETTINGS
+                        </span>
+
+                        <h2>
+                            Coin Settings
+                        </h2>
+
+                        <p>
+                            Configure how users earn Fast Coins
+                            across PROJOYSTICK.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="admin-primary-btn"
+                        id="configureCoinSettings"
+                    >
+                        ⚙ Configure Coin Settings
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ==================================
+                 SPECIAL PROMOTIONS
+            =================================== -->
+
+            <div class="admin-panel promotions-panel">
+
+
+                <!-- PROMOTION HEADER -->
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span class="admin-label">
+                            REWARDS
+                        </span>
+
+                        <h2>
+                            Special Promotions
+                        </h2>
+
+                        <p>
+                            Create and manage promotional
+                            Fast Coins redemption codes.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="admin-primary-btn"
+                        id="createPromotion"
+                    >
+                        + Create Promotion
+                    </button>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     PROMOTIONS TABLE
+                =================================== -->
+
+                <div class="admin-table-card">
+
+
+                    <div class="admin-table-wrapper">
+
+
+                        <table class="admin-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Code
+                                    </th>
+
+                                    <th>
+                                        Validity
+                                    </th>
+
+                                    <th>
+                                        Redemption Left
+                                    </th>
+
+                                    <th>
+                                        Coin Reward
+                                    </th>
+
+                                    <th>
+                                        Actions
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="promotionTableBody">
+
+
+                                <!-- JS INSERTS PROMOTIONS HERE -->
+
+
+                                <tr>
+
+                                    <td
+                                        colspan="5"
+                                        class="admin-table-empty"
+                                    >
+                                        Loading promotions...
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- ==========================================
+     COIN SETTINGS MODAL
+=========================================== -->
+
+<div
+    class="admin-modal"
+    id="coinSettingsModal"
+    aria-hidden="true"
+>
+
+    <div class="admin-modal-content">
+
+
+        <div class="admin-modal-header">
+
+            <div>
+
+                <span class="admin-label">
+                    FAST COINS
+                </span>
+
+                <h2>
+                    Configure Coin Settings
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="admin-modal-close"
+                id="closeCoinSettings"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- SETTINGS FORM -->
+
+        <form
+            id="coinSettingsForm"
+            class="admin-form"
+        >
+
+
+            <!-- ==================================
+                 GENERAL SETTINGS
+            =================================== -->
+
+            <div class="admin-form-section">
+
+                <div class="admin-form-section-title">
+
+                    <div>
+
+                        <h3>
+                            General Settings
+                        </h3>
+
+                        <p>
+                            Control whether Fast Coins
+                            are active on PROJOYSTICK.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label class="admin-checkbox-row">
+
+                    <input
+                        type="checkbox"
+                        id="coinsEnabled"
+                    >
+
+                    <span>
+
+                        <strong>
+                            Enable Fast Coins
+                        </strong>
+
+                        <small>
+                            When enabled, users can
+                            earn and use Fast Coins.
+                        </small>
+
+                    </span>
+
+                </label>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 ACCOUNT CREATION
+            =================================== -->
+
+            <div class="admin-form-section">
+
+                <div class="admin-form-section-title">
+
+                    <div>
+
+                        <h3>
+                            Account Creation Reward
+                        </h3>
+
+                        <p>
+                            Coins awarded when a new
+                            user account is created.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-form-group">
+
+                    <label
+                        for="accountCreationCoins"
+                    >
+                        Account Creation Coins
+                    </label>
+
+                    <input
+                        type="number"
+                        id="accountCreationCoins"
+                        min="0"
+                        step="1"
+                        inputmode="numeric"
+                        placeholder="100"
+                        required
+                    >
+
+                    <small>
+                        Example: 100 Fast Coins.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 FIRST PURCHASE
+            =================================== -->
+
+            <div class="admin-form-section">
+
+                <div class="admin-form-section-title">
+
+                    <div>
+
+                        <h3>
+                            First Purchase Reward
+                        </h3>
+
+                        <p>
+                            Coins awarded after a user's
+                            first eligible purchase.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-form-group">
+
+                    <label
+                        for="firstPurchaseCoins"
+                    >
+                        First Purchase Coins
+                    </label>
+
+                    <input
+                        type="number"
+                        id="firstPurchaseCoins"
+                        min="0"
+                        step="1"
+                        inputmode="numeric"
+                        placeholder="250"
+                        required
+                    >
+
+                    <small>
+                        Example: 250 Fast Coins.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 DAILY LOGIN
+            =================================== -->
+
+            <div class="admin-form-section">
+
+                <div class="admin-form-section-title">
+
+                    <div>
+
+                        <h3>
+                            Daily Login Reward
+                        </h3>
+
+                        <p>
+                            Configure the minimum and
+                            maximum Fast Coins users
+                            can receive from daily login.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="coin-settings-grid">
+
+
+                    <!-- MINIMUM -->
+
+                    <div class="admin-form-group">
+
+                        <label
+                            for="dailyLoginMin"
+                        >
+                            Minimum Coins
+                        </label>
+
+                        <input
+                            type="number"
+                            id="dailyLoginMin"
+                            min="0"
+                            step="1"
+                            inputmode="numeric"
+                            placeholder="10"
+                            required
+                        >
+
+                        <small>
+                            Lowest daily reward.
+                        </small>
+
+                    </div>
+
+
+                    <!-- MAXIMUM -->
+
+                    <div class="admin-form-group">
+
+                        <label
+                            for="dailyLoginMax"
+                        >
+                            Maximum Coins
+                        </label>
+
+                        <input
+                            type="number"
+                            id="dailyLoginMax"
+                            min="0"
+                            step="1"
+                            inputmode="numeric"
+                            placeholder="50"
+                            required
+                        >
+
+                        <small>
+                            Highest daily reward.
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SAVE -->
+
+            <div class="admin-modal-footer">
+
+                <button
+                    type="submit"
+                    class="admin-primary-btn"
+                    id="saveCoinSettings"
+                >
+                    💾 Save Coin Settings
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==========================================
+     PROMOTION MODAL
+=========================================== -->
+
+<div
+    class="admin-modal"
+    id="promotionModal"
+    aria-hidden="true"
+>
+
+    <div class="admin-modal-content">
+
+
+        <div class="admin-modal-header">
+
+            <div>
+
+                <span class="admin-label">
+                    FAST COINS
+                </span>
+
+                <h2 id="promotionModalTitle">
+                    Create Promotion
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="admin-modal-close"
+                id="closePromotion"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- PROMOTION FORM -->
+
+        <form
+            id="promotionForm"
+            class="admin-form"
+        >
+
+
+            <!-- CODE -->
+
+            <div class="admin-form-section">
+
+                <div class="admin-form-group">
+
+                    <label
+                        for="promotionCode"
+                    >
+                        Promotion Code
+                    </label>
+
+                    <input
+                        type="text"
+                        id="promotionCode"
+                        maxlength="50"
+                        placeholder="WELCOME50"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <small>
+                        Users will enter this code to
+                        redeem the promotion.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- COIN REWARD -->
+
+            <div class="admin-form-section">
+
+                <div class="admin-form-group">
+
+                    <label
+                        for="promotionCoinReward"
+                    >
+                        Redeem Coin Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="promotionCoinReward"
+                        min="1"
+                        step="1"
+                        inputmode="numeric"
+                        placeholder="50"
+                        required
+                    >
+
+                    <small>
+                        Number of Fast Coins awarded
+                        for one successful redemption.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MAX REDEMPTIONS -->
+
+            <div class="admin-form-section">
+
+                <div class="admin-form-group">
+
+                    <label
+                        for="promotionMaxRedemptions"
+                    >
+                        Maximum Redemptions
+                    </label>
+
+                    <input
+                        type="number"
+                        id="promotionMaxRedemptions"
+                        min="1"
+                        step="1"
+                        inputmode="numeric"
+                        placeholder="100"
+                        required
+                    >
+
+                    <small>
+                        Maximum number of users who can
+                        redeem this promotion.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- VALIDITY -->
+
+            <div class="admin-form-section">
+
+                <div class="coin-settings-grid">
+
+
+                    <!-- START -->
+
+                    <div class="admin-form-group">
+
+                        <label
+                            for="promotionStartAt"
+                        >
+                            Start Date
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            id="promotionStartAt"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- END -->
+
+                    <div class="admin-form-group">
+
+                        <label
+                            for="promotionEndAt"
+                        >
+                            End Date
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            id="promotionEndAt"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ACTIVE -->
+
+            <div class="admin-form-section">
+
+                <label class="admin-checkbox-row">
+
+                    <input
+                        type="checkbox"
+                        id="promotionActive"
+                        checked
+                    >
+
+                    <span>
+
+                        <strong>
+                            Promotion Active
+                        </strong>
+
+                        <small>
+                            Allow users to redeem this
+                            promotion during its validity.
+                        </small>
+
+                    </span>
+
+                </label>
+
+            </div>
+
+
+
+            <!-- SAVE -->
+
+            <div class="admin-modal-footer">
+
+                <button
+                    type="submit"
+                    class="admin-primary-btn"
+                    id="savePromotion"
+                >
+                    💾 Save Promotion
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==========================================
+     ADMIN AUTHENTICATION
+=========================================== -->
+
+<script
+    type="module"
+    src="../js/admin-auth.js"
+></script>
+
+
+<!-- ==========================================
+     FAST COINS ADMIN
+=========================================== -->
+
+<script
+    type="module"
+    src="../js/admin-coins.js"
+></script>
+
+
+</body>
+
+</html>

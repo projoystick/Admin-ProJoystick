@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Games — PROJOYSTICK Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="../../css/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../css/games.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         ADMIN NAVBAR
+    =========================================== -->
+
+    <header class="admin-navbar">
+
+        <a
+            href="../../index.html"
+            class="admin-logo"
+        >
+            <span>◆</span>
+            PRO<span>JOYSTICK</span>
+            <small>ADMIN</small>
+        </a>
+
+
+        <div class="admin-nav-right">
+
+            <span id="adminUsername">
+                Loading...
+            </span>
+
+            <button
+                type="button"
+                id="adminLogout"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         ADMIN LAYOUT
+    =========================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- ======================================
+             SIDEBAR
+        ======================================= -->
+
+        <aside class="admin-sidebar">
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="../index.html"
+                class="admin-menu"
+            >
+                <span>▦</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <!-- GAMES -->
+
+            <a
+                href="./games.html"
+                class="admin-menu active"
+            >
+                <span>🎮</span>
+                <span>Games</span>
+            </a>
+
+
+            <!-- PRODUCTS -->
+
+            <a
+                href="./products.html"
+                class="admin-menu"
+            >
+                <span>◈</span>
+                <span>Products</span>
+            </a>
+
+
+            <!-- ORDERS -->
+
+            <a
+                href="./orders.html"
+                class="admin-menu"
+            >
+                <span>📦</span>
+                <span>Orders</span>
+            </a>
+
+
+            <!-- USERS -->
+
+            <a
+                href="./users.html"
+                class="admin-menu"
+            >
+                <span>👥</span>
+                <span>Users</span>
+            </a>
+
+            <a
+                href="./coins.html"
+                class="admin-menu"
+                aria-current="page"
+            >
+
+                <span>🪙</span>
+
+                <span>
+                    Fast Coins
+                </span>
+
+            </a>
+
+
+            <div class="admin-sidebar-divider"></div>
+
+
+            <!-- STORE -->
+
+            <a
+                href="../../index.html"
+                class="admin-menu"
+            >
+                <span>↗</span>
+                <span>View Store</span>
+            </a>
+
+
+        </aside>
+
+
+
+        <!-- ======================================
+             MAIN CONTENT
+        ======================================= -->
+
+        <main class="admin-main">
+
+
+            <!-- ==================================
+                 GAMES
+            =================================== -->
+
+            <section
+                class="admin-section active"
+                id="gamesSection"
+            >
+
+
+                <!-- HEADER -->
+
+                <div class="admin-section-header">
+
+                    <button
+                        type="button"
+                        id="addGameBtn"
+                        class="admin-primary-btn"
+                    >
+                        + Add Game
+                    </button>
+
+                </div>
+
+
+
+
+                <!-- ==================================
+                     LOADING
+                =================================== -->
+
+                <div
+                    id="gamesLoading"
+                    class="admin-loading"
+                    style="display: none;"
+                >
+                    Loading games...
+                </div>
+
+
+
+                <!-- ==================================
+                     GAMES TABLE
+                =================================== -->
+
+                <div class="admin-table-card">
+
+                    <div class="admin-table-wrapper">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Game
+                                    </th>
+
+                                    <th>
+                                        Category
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Actions
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="gamesTableBody">
+
+                                <tr>
+
+                                    <td
+                                        colspan="4"
+                                        class="admin-table-empty"
+                                    >
+                                        Loading games...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ==========================================
+         GAME MODAL
+    =========================================== -->
+
+    <div
+        id="gameModal"
+        class="admin-modal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="admin-modal-content game-modal-content"
+        >
+
+
+            <!-- ==================================
+                 MODAL HEADER
+            =================================== -->
+
+            <div class="admin-modal-header">
+
+                <div>
+
+                    <span class="admin-label">
+                        PROJOYSTICK
+                    </span>
+
+                    <h2 id="gameModalTitle">
+                        Add Game
+                    </h2>
+
+                    <p>
+                        Configure the game and its delivery fields.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="closeGameModal"
+                    class="admin-modal-close"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 GAME FORM
+            =================================== -->
+
+            <form
+                id="gameForm"
+                class="admin-form"
+            >
+
+
+                <input
+                    type="hidden"
+                    id="gameId"
+                    value=""
+                >
+
+
+
+                <!-- ==================================
+                     BASIC INFORMATION
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <span class="admin-label">
+                            GAME
+                        </span>
+
+                        <h3>
+                            Basic Information
+                        </h3>
+
+                        <p>
+                            Enter the basic details of the game.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- GAME NAME -->
+
+                    <div class="admin-form-group">
+
+                        <label for="gameName">
+                            Game Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="gameName"
+                            name="gameName"
+                            placeholder="e.g. PUBG Mobile"
+                            autocomplete="off"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- CATEGORY -->
+
+                    <div class="admin-form-group">
+
+                        <label for="gameCategory">
+                            Category
+                        </label>
+
+                        <input
+                            type="text"
+                            id="gameCategory"
+                            name="gameCategory"
+                            placeholder="e.g. Battle Royale"
+                            autocomplete="off"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="admin-form-group">
+
+                        <label for="gameDescription">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="gameDescription"
+                            name="gameDescription"
+                            rows="5"
+                            maxlength="2000"
+                            placeholder="Enter a short description of the game..."
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- IMAGE -->
+
+                    <div class="admin-form-group">
+
+                        <label for="gameImage">
+                            Game Image URL
+                        </label>
+
+                        <input
+                            type="url"
+                            id="gameImage"
+                            name="gameImage"
+                            placeholder="https://example.com/game-image.jpg"
+                            autocomplete="off"
+                        >
+
+                        <small>
+                            Enter the direct URL of the game image.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     GAME SETTINGS
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <span class="admin-label">
+                            SETTINGS
+                        </span>
+
+                        <h3>
+                            Game Settings
+                        </h3>
+
+                        <p>
+                            Control how the game appears on PROJOYSTICK.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- ACTIVE -->
+
+                    <label class="admin-checkbox-row">
+
+                        <input
+                            type="checkbox"
+                            id="gameActive"
+                            name="gameActive"
+                            checked
+                        >
+
+                        <span>
+
+                            <strong>
+                                Active Game
+                            </strong>
+
+                            <small>
+                                Customers can see and purchase
+                                products belonging to this game.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+
+                    <!-- POPULAR -->
+
+                    <label class="admin-checkbox-row">
+
+                        <input
+                            type="checkbox"
+                            id="gamePopular"
+                            name="gamePopular"
+                        >
+
+                        <span>
+
+                            <strong>
+                                Popular Game
+                            </strong>
+
+                            <small>
+                                Mark this game as popular for
+                                display in the popular games section.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     DELIVERY FIELDS
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <div>
+
+                            <span class="admin-label">
+                                DELIVERY
+                            </span>
+
+                            <h3>
+                                Delivery Fields
+                            </h3>
+
+                            <p>
+                                Define the information customers
+                                must provide when purchasing products
+                                for this game.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="addDeliveryFieldBtn"
+                            class="admin-secondary-btn"
+                        >
+                            + Add Field
+                        </button>
+
+                    </div>
+
+
+
+                    <div
+                        id="deliveryFieldsContainer"
+                        class="delivery-fields-container"
+                    ></div>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     FORM ACTIONS
+                =================================== -->
+
+                <div class="admin-modal-footer">
+
+                    <button
+                        type="button"
+                        id="cancelGame"
+                        class="admin-secondary-btn"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        id="saveGameBtn"
+                        class="admin-primary-btn"
+                    >
+                        Save Game
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         ADMIN AUTHENTICATION
+    =========================================== -->
+
+    <script
+        type="module"
+        src="../../js/admin-auth.js?v=20260831"
+    ></script>
+
+
+
+    <!-- ==========================================
+         GAMES JAVASCRIPT
+    =========================================== -->
+
+    <script
+        type="module"
+        src="../../js/admin-games.js?v=20260831"
+    ></script>
+
+
+</body>
+
+</html>

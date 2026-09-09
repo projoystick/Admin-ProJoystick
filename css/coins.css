@@ -1,0 +1,61 @@
+/* ==========================================
+   ADMIN NOTIFICATION
+========================================== */
+
+.admin-notification {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+
+    min-width: 280px;
+    max-width: 420px;
+
+    padding: 14px 18px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    background: #11131a;
+    color: var(--text);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+
+    opacity: 0;
+    transform: translateY(-10px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.admin-notification.success {
+    border-color: #2f8f5b;
+}
+
+.admin-notification.error {
+    border-color: #c94b4b;
+}
+
+@media (max-width: 620px) {
+
+    .admin-notification {
+        top: 15px;
+        left: 15px;
+        right: 15px;
+
+        min-width: 0;
+        max-width: none;
+    }
+
+}

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Users — PROJOYSTICK Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         ADMIN NAVBAR
+    =========================================== -->
+
+    <header class="admin-navbar">
+
+        <a
+            href="../index.html"
+            class="admin-logo"
+        >
+            <span>◆</span>
+            PRO<span>JOYSTICK</span>
+            <small>ADMIN</small>
+        </a>
+
+
+        <div class="admin-nav-right">
+
+            <span id="adminUsername">
+                Loading...
+            </span>
+
+            <button
+                type="button"
+                id="adminLogout"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         ADMIN LAYOUT
+    =========================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- ======================================
+             SIDEBAR
+        ======================================= -->
+
+        <aside class="admin-sidebar">
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="../index.html"
+                class="admin-menu"
+            >
+                <span>▦</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <!-- GAMES -->
+
+            <a
+                href="./games.html"
+                class="admin-menu"
+            >
+                <span>🎮</span>
+                <span>Games</span>
+            </a>
+
+
+            <!-- PRODUCTS -->
+
+            <a
+                href="./products.html"
+                class="admin-menu"
+            >
+                <span>◈</span>
+                <span>Products</span>
+            </a>
+
+
+            <!-- ORDERS -->
+
+            <a
+                href="./orders.html"
+                class="admin-menu"
+            >
+                <span>📦</span>
+                <span>Orders</span>
+            </a>
+
+
+            <!-- USERS -->
+
+            <a
+                href="./users.html"
+                class="admin-menu active"
+            >
+                <span>👥</span>
+                <span>Users</span>
+            </a>
+
+            <a
+                href="./coins.html"
+                class="admin-menu"
+                aria-current="page"
+            >
+
+                <span>🪙</span>
+
+                <span>
+                    Fast Coins
+                </span>
+
+            </a>
+
+
+            <div class="admin-sidebar-divider"></div>
+
+
+            <!-- STORE -->
+
+            <a
+                href="../../index.html"
+                class="admin-menu"
+            >
+                <span>↗</span>
+                <span>View Store</span>
+            </a>
+
+
+        </aside>
+
+
+
+        <!-- ======================================
+             MAIN CONTENT
+        ======================================= -->
+
+        <main class="admin-main">
+
+
+            <!-- ==================================
+                 USERS
+            =================================== -->
+
+            <section
+                class="admin-section active"
+                id="usersSection"
+            >
+
+                <!-- ==================================
+                     USER STATISTICS
+                =================================== -->
+
+                <div class="admin-stats">
+
+
+                    <div class="stat-card">
+
+                        <span>👥</span>
+
+                        <div>
+
+                            <small>
+                                TOTAL USERS
+                            </small>
+
+                            <strong id="totalUsers">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>✓</span>
+
+                        <div>
+
+                            <small>
+                                ACTIVE USERS
+                            </small>
+
+                            <strong id="activeUsers">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>🚫</span>
+
+                        <div>
+
+                            <small>
+                                DISABLED USERS
+                            </small>
+
+                            <strong id="disabledUsers">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     USER MANAGEMENT
+                =================================== -->
+
+                <div class="admin-panel">
+
+
+                    <div class="admin-section-header">
+
+                        
+
+                    </div>
+
+
+
+                    <!-- LOADING -->
+
+                    <div
+                        id="usersLoading"
+                        class="admin-loading"
+                        style="display:none;"
+                    >
+                        Loading users...
+                    </div>
+
+
+
+                    <!-- TABLE -->
+
+                    <div class="admin-table-card">
+
+                        <div class="admin-table-wrapper">
+
+                            <table class="admin-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            User
+                                        </th>
+
+                                        <th>
+                                            Email
+                                        </th>
+
+                                        <th>
+                                            Role
+                                        </th>
+
+                                        <th>
+                                            Joined
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                        <th>
+                                            Actions
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="usersTableBody">
+
+                                    <tr>
+
+                                        <td
+                                            colspan="6"
+                                            class="admin-table-empty"
+                                        >
+                                            Loading users...
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ==========================================
+         USER MODAL
+    =========================================== -->
+
+    <div
+        id="userModal"
+        class="admin-modal"
+        aria-hidden="true"
+    >
+
+        <div class="admin-modal-content">
+
+
+            <!-- MODAL HEADER -->
+
+            <div class="admin-modal-header">
+
+                <div>
+
+                    <span class="admin-label">
+                        USER DETAILS
+                    </span>
+
+                    <h2 id="userModalTitle">
+                        User Information
+                    </h2>
+
+                    <p>
+                        View account information and status.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="closeUserModal"
+                    class="admin-modal-close"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- USER DETAILS -->
+
+            <div class="admin-form">
+
+
+                <div class="admin-form-section">
+
+
+                    <div class="admin-form-section-title">
+
+                        <h3>
+                            Account Information
+                        </h3>
+
+                        <p>
+                            Information associated with this account.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="admin-form-group">
+
+                        <label>
+                            User ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="viewUserId"
+                            readonly
+                        >
+
+                    </div>
+
+
+
+                    <div class="admin-form-group">
+
+                        <label>
+                            Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="viewUserName"
+                            readonly
+                        >
+
+                    </div>
+
+
+
+                    <div class="admin-form-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="text"
+                            id="viewUserEmail"
+                            readonly
+                        >
+
+                    </div>
+
+
+
+                    <div class="admin-form-group">
+
+                        <label>
+                            Role
+                        </label>
+
+                        <input
+                            type="text"
+                            id="viewUserRole"
+                            readonly
+                        >
+
+                    </div>
+
+
+
+                    <div class="admin-form-group">
+
+                        <label>
+                            Account Status
+                        </label>
+
+                        <input
+                            type="text"
+                            id="viewUserStatus"
+                            readonly
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- MODAL ACTIONS -->
+
+                <div class="admin-modal-footer">
+
+                    <button
+                        type="button"
+                        id="cancelUser"
+                        class="admin-secondary-btn"
+                    >
+                        Close
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         ADMIN JAVASCRIPT
+    =========================================== -->
+
+    <script
+        type="module"
+        src="../js/admin-auth.js?v=20260831"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/admin-users.js?v=20260901"
+    ></script>
+
+
+</body>
+
+</html>

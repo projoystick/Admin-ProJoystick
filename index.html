@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard — PROJOYSTICK</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         ADMIN NAVBAR
+    =========================================== -->
+
+    <header class="admin-navbar">
+
+        <a
+            href="../index.html"
+            class="admin-logo"
+        >
+            <span>◆</span>
+            PRO<span>JOYSTICK</span>
+            <small>ADMIN</small>
+        </a>
+
+
+        <div class="admin-nav-right">
+
+            <span id="adminUsername">
+                Loading...
+            </span>
+
+            <button
+                type="button"
+                id="adminLogout"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         ADMIN LAYOUT
+    =========================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- ======================================
+             SIDEBAR
+        ======================================= -->
+
+        <aside class="admin-sidebar">
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="./admin.html"
+                class="admin-menu active"
+            >
+                <span>▦</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <!-- GAMES -->
+
+            <a
+                href="./pages/games.html"
+                class="admin-menu"
+            >
+                <span>🎮</span>
+                <span>Games</span>
+            </a>
+
+
+            <!-- PRODUCTS -->
+
+            <a
+                href="./pages/products.html"
+                class="admin-menu"
+            >
+                <span>◈</span>
+                <span>Products</span>
+            </a>
+
+
+            <!-- ORDERS -->
+
+            <a
+                href="./pages/orders.html"
+                class="admin-menu"
+            >
+                <span>📦</span>
+                <span>Orders</span>
+            </a>
+
+
+            <!-- USERS -->
+
+            <a
+                href="./pages/users.html"
+                class="admin-menu"
+            >
+                <span>👥</span>
+                <span>Users</span>
+            </a>
+            
+            <a
+                href="/pages/coins.html"
+                class="admin-menu"
+                aria-current="page"
+            >
+
+                <span>🪙</span>
+
+                <span>
+                    Fast Coins
+                </span>
+
+            </a>
+
+
+            <div class="admin-sidebar-divider"></div>
+
+
+            <!-- STORE -->
+
+            <a
+                href="../index.html"
+                class="admin-menu"
+            >
+                <span>↗</span>
+                <span>View Store</span>
+            </a>
+
+            
+
+
+        </aside>
+
+
+
+        <!-- ======================================
+             MAIN CONTENT
+        ======================================= -->
+
+        <main class="admin-main">
+
+
+            <!-- ==================================
+                 DASHBOARD
+            =================================== -->
+
+            <section
+                class="admin-section active"
+                id="dashboardSection"
+            >
+
+
+                <!-- HEADER -->
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span class="admin-label">
+                            PROJOYSTICK
+                        </span>
+
+                        <h1>
+                            Dashboard
+                        </h1>
+
+                        <p>
+                            Manage your marketplace.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     STATISTICS
+                =================================== -->
+
+                <div class="admin-stats">
+
+
+                    <!-- GAMES -->
+
+                    <div class="stat-card">
+
+                        <span>🎮</span>
+
+                        <div>
+
+                            <small>
+                                TOTAL GAMES
+                            </small>
+
+                            <strong id="totalGames">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PRODUCTS -->
+
+                    <div class="stat-card">
+
+                        <span>◈</span>
+
+                        <div>
+
+                            <small>
+                                PRODUCTS
+                            </small>
+
+                            <strong id="totalProducts">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ORDERS -->
+
+                    <div class="stat-card">
+
+                        <span>📦</span>
+
+                        <div>
+
+                            <small>
+                                ORDERS
+                            </small>
+
+                            <strong id="totalOrders">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- USERS -->
+
+                    <div class="stat-card">
+
+                        <span>👥</span>
+
+                        <div>
+
+                            <small>
+                                USERS
+                            </small>
+
+                            <strong id="totalUsers">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     WELCOME PANEL
+                =================================== -->
+
+                <div class="admin-panel">
+
+                    <span class="admin-label">
+                        ADMINISTRATOR
+                    </span>
+
+                    <h2>
+                        Welcome to PROJOYSTICK.
+                    </h2>
+
+                    <p>
+                        From here you can manage games,
+                        in-game currencies, items,
+                        inventory and customer orders.
+                    </p>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ==========================================
+         ADMIN JAVASCRIPT
+    =========================================== -->
+
+    <script
+        type="module"
+        src="./js/admin-auth.js?v=20260831"
+    ></script>
+
+    <script
+        type="module"
+        src="./js/dashboard.js?v=20260831"
+    ></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1094 @@
+/* ==========================================
+   GAMEVAULT ADMIN — GAMES PAGE
+   Game-Specific Styles
+========================================== */
+
+
+/* ==========================================
+   GAME CELL
+========================================== */
+
+.admin-game-cell {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    min-width: 230px;
+}
+
+.admin-game-image {
+    position: relative;
+
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    background: #20242e;
+}
+
+.admin-game-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.admin-game-image-fallback {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #777f91;
+
+    font-size: 20px;
+}
+
+.admin-game-info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.admin-game-info strong {
+    overflow: hidden;
+
+    color: #f3f5f9;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.admin-status {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.admin-status.active {
+    background: #15281f;
+    color: #67d59a;
+}
+
+.admin-status.inactive {
+    background: #28221b;
+    color: #d5a66a;
+}
+
+
+/* ==========================================
+   POPULAR BADGE
+========================================== */
+
+.admin-popular-badge {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    padding: 3px 7px;
+
+    border-radius: 999px;
+
+    background: #282216;
+    color: #e0b56a;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   ACTION BUTTONS
+========================================== */
+
+.admin-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.admin-action-btn {
+    padding: 7px 11px;
+
+    border: 1px solid #303540;
+    border-radius: 7px;
+
+    background: #181b22;
+    color: #bfc4ce;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.admin-action-btn:hover {
+    background: #222630;
+    border-color: #414754;
+    color: #ffffff;
+}
+
+.admin-action-btn.delete {
+    color: #d9838c;
+    border-color: #41272c;
+    background: #21181b;
+}
+
+.admin-action-btn.delete:hover {
+    background: #321c21;
+    border-color: #593037;
+    color: #f19aa3;
+}
+
+
+/* ==========================================
+   GAME MODAL CONTENT
+========================================== */
+
+.game-modal-content {
+    width: min(850px, 100%);
+}
+
+
+/* ==========================================
+   DELIVERY FIELDS
+========================================== */
+
+.delivery-fields-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* ==========================================
+   EMPTY STATE
+========================================== */
+
+.delivery-field-empty {
+    padding: 16px;
+
+    border: 1px solid #292e38;
+    border-radius: 10px;
+
+    background: #15181f;
+    color: #8f98a8;
+
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/* ==========================================
+   DELIVERY FIELD ROW
+========================================== */
+
+.delivery-field-row {
+    padding: 16px;
+
+    border: 1px solid #292e38;
+    border-radius: 10px;
+
+    background: #15181f;
+}
+
+
+/* ==========================================
+   DELIVERY FIELD PREVIEW
+========================================== */
+
+.delivery-field-preview {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.delivery-preview-main,
+.delivery-field-preview-main {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 8px 14px;
+}
+
+.delivery-preview-label {
+    color: #e1e5eb;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.delivery-preview-key,
+.delivery-preview-type,
+.delivery-preview-status {
+    color: #8f98a8;
+    font-size: 12px;
+}
+
+.delivery-preview-status {
+    padding: 3px 7px;
+
+    border-radius: 999px;
+
+    background: #20242e;
+}
+
+
+/* ==========================================
+   DELIVERY FIELD ACTIONS
+========================================== */
+
+.delivery-field-actions,
+.delivery-edit-actions,
+.delivery-preview-actions,
+.delivery-field-editor-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    flex-shrink: 0;
+}
+
+.delivery-field-editor-actions {
+    justify-content: flex-end;
+
+    margin-top: 4px;
+}
+
+
+/* ==========================================
+   DELIVERY FIELD EDITOR
+========================================== */
+
+.delivery-field-editor {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        150px
+        minmax(180px, 0.8fr);
+
+    gap: 12px;
+
+    margin-top: 4px;
+}
+
+.delivery-field-group {
+    min-width: 0;
+}
+
+.delivery-field-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #a8b1c1;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.delivery-field-group input,
+.delivery-field-group select {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+
+    box-sizing: border-box;
+    padding: 0 12px;
+
+    border: 1px solid #303847;
+    border-radius: 8px;
+
+    background: #0d111a;
+    color: #f5f7fb;
+
+    font-family: inherit;
+}
+
+.delivery-field-group input:focus,
+.delivery-field-group select:focus {
+    outline: none;
+
+    border-color: #414754;
+}
+
+.delivery-options-wrap,
+.delivery-required,
+.delivery-edit-actions {
+    grid-column: 1 / -1;
+}
+
+.delivery-required {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #a8b1c1;
+
+    font-size: 12px;
+}
+
+.delivery-required input {
+    width: 16px;
+    height: 16px;
+
+    margin: 0;
+
+    accent-color: #7c5cff;
+}
+
+
+/* ==========================================
+   DELIVERY FIELD EDITOR HEADER
+========================================== */
+
+.delivery-field-editor-header {
+    margin-bottom: 15px;
+}
+
+.delivery-field-editor-header strong {
+    color: #e1e5eb;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   DELIVERY FIELD GRID
+========================================== */
+
+.delivery-field-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        150px
+        minmax(180px, 0.8fr);
+
+    gap: 12px;
+}
+
+.delivery-field-grid .admin-form-group {
+    margin: 5px 0;
+}
+
+
+/* ==========================================
+   FORM GROUPS
+========================================== */
+
+.delivery-field-row .admin-form-group {
+    min-width: 0;
+}
+
+.delivery-field-row .admin-form-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #a8b1c1;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.delivery-field-row .admin-form-group input[type="text"],
+.delivery-field-row .admin-form-group input[type="number"],
+.delivery-field-row .admin-form-group select {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #303847;
+    border-radius: 8px;
+
+    background: #0d111a;
+    color: #f5f7fb;
+
+    font-family: inherit;
+}
+
+.delivery-field-row .admin-form-group input:focus,
+.delivery-field-row .admin-form-group select:focus {
+    outline: none;
+
+    border-color: #414754;
+}
+
+
+/* ==========================================
+   CHECKBOX
+========================================== */
+
+.checkbox-label {
+    display: flex !important;
+    align-items: center;
+
+    gap: 8px;
+
+    min-height: 42px;
+
+    margin: 0 !important;
+
+    color: #a8b1c1 !important;
+
+    font-size: 12px;
+    font-weight: 500 !important;
+}
+
+.checkbox-label input {
+    width: 16px;
+    height: 16px;
+
+    margin: 0;
+
+    accent-color: #7c5cff;
+}
+
+
+/* ==========================================
+   HIDDEN
+========================================== */
+
+.hidden {
+    display: none !important;
+}
+
+.delivery-options-wrap.hidden {
+    display: none !important;
+}
+
+
+/* ==========================================
+   DELIVERY OPTIONS
+========================================== */
+
+.delivery-options-wrap {
+    margin-top: 16px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid #292e38;
+}
+
+.delivery-options-title {
+    margin-bottom: 12px;
+
+    color: #e1e5eb;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   DROPDOWN OPTIONS EDITOR
+========================================== */
+
+.delivery-options-editor {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* ==========================================
+   DROPDOWN OPTIONS EMPTY
+========================================== */
+
+.delivery-options-empty {
+    padding: 12px;
+
+    border: 1px dashed #303847;
+    border-radius: 8px;
+
+    color: #777f91;
+
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/* ==========================================
+   DROPDOWN OPTION
+========================================== */
+
+.delivery-option-row {
+    padding: 14px;
+
+    border: 1px solid #292e38;
+    border-radius: 10px;
+
+    background: #15181f;
+}
+
+
+/* ==========================================
+   DROPDOWN OPTION HEADER
+========================================== */
+
+.delivery-option-header {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        40px;
+
+    align-items: end;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+}
+
+
+/* ==========================================
+   OPTION LABEL
+========================================== */
+
+.delivery-option-label-wrap {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.delivery-option-label-wrap label {
+    display: block;
+
+    margin: 0;
+
+    color: #a8b1c1;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.delivery-option-label-wrap input[type="text"] {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+
+    box-sizing: border-box;
+
+    padding: 0 12px;
+
+    border: 1px solid #303847;
+    border-radius: 8px;
+
+    background: #0d111a;
+    color: #f5f7fb;
+
+    font-family: inherit;
+}
+
+.delivery-option-label-wrap input[type="text"]:focus {
+    outline: none;
+
+    border-color: #414754;
+}
+
+
+/* ==========================================
+   OPTION VALUE
+========================================== */
+
+.delivery-option-value-wrap {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.delivery-option-value-wrap label {
+    display: block;
+
+    margin: 0;
+
+    color: #a8b1c1;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.delivery-option-value-wrap input[type="text"] {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+
+    box-sizing: border-box;
+
+    padding: 0 12px;
+
+    border: 1px solid #303847;
+    border-radius: 8px;
+
+    background: #0d111a;
+    color: #f5f7fb;
+
+    font-family: inherit;
+}
+
+.delivery-option-value-wrap input[type="text"]:focus {
+    outline: none;
+
+    border-color: #414754;
+}
+
+
+/* ==========================================
+   DROPDOWN OPTION DELETE BUTTON
+========================================== */
+
+.delivery-option-header .delete-option-btn {
+    width: 40px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding: 0;
+
+    flex-shrink: 0;
+
+    border: 1px solid #41272c;
+    border-radius: 7px;
+
+    background: #21181b;
+    color: #d9838c;
+
+    font-family: inherit;
+    font-size: 17px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.delivery-option-header .delete-option-btn:hover {
+    background: #321c21;
+
+    border-color: #593037;
+
+    color: #f19aa3;
+}
+
+
+/* ==========================================
+   CONDITIONAL FIELDS SECTION
+========================================== */
+
+.conditional-fields-section {
+    margin-top: 16px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #292e38;
+}
+
+.conditional-fields-title {
+    margin-bottom: 10px;
+
+    color: #a8b1c1;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   CONDITIONAL FIELDS CONTAINER
+========================================== */
+
+.conditional-fields-container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================
+   CONDITIONAL FIELD
+========================================== */
+
+.conditional-field-row {
+    padding: 13px;
+
+    border: 1px solid #303540;
+    border-radius: 9px;
+
+    background: #181b22;
+}
+
+
+/* ==========================================
+   CONDITIONAL FIELD HEADER
+========================================== */
+
+.conditional-field-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+}
+
+.conditional-field-header strong {
+    color: #e1e5eb;
+
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   CONDITIONAL FIELD GRID
+========================================== */
+
+.conditional-field-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        150px
+        minmax(150px, 0.7fr);
+
+    gap: 12px;
+}
+
+
+/* ==========================================
+   CONDITIONAL FIELD FORM GROUP
+========================================== */
+
+.conditional-field-row .admin-form-group {
+    min-width: 0;
+}
+
+.conditional-field-row .admin-form-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #a8b1c1;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.conditional-field-row .admin-form-group input[type="text"],
+.conditional-field-row .admin-form-group input[type="number"],
+.conditional-field-row .admin-form-group select {
+    width: 100%;
+    min-width: 0;
+    min-height: 40px;
+
+    padding: 0 11px;
+
+    border: 1px solid #303847;
+    border-radius: 8px;
+
+    background: #0d111a;
+    color: #f5f7fb;
+
+    font-family: inherit;
+}
+
+.conditional-field-row .admin-form-group input:focus,
+.conditional-field-row .admin-form-group select:focus {
+    outline: none;
+
+    border-color: #414754;
+}
+
+
+/* ==========================================
+   CONDITIONAL FIELD REQUIRED
+========================================== */
+
+.conditional-required-group {
+    min-width: 0;
+}
+
+
+/* ==========================================
+   CONDITIONAL FIELD OPTIONS
+========================================== */
+
+.conditional-field-options-wrap {
+    margin-top: 12px;
+}
+
+.conditional-field-options-wrap label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #a8b1c1;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.conditional-field-options-wrap input {
+    width: 100%;
+    min-height: 40px;
+
+    box-sizing: border-box;
+
+    padding: 0 11px;
+
+    border: 1px solid #303847;
+    border-radius: 8px;
+
+    background: #0d111a;
+    color: #f5f7fb;
+
+    font-family: inherit;
+}
+
+.conditional-field-options-wrap input:focus {
+    outline: none;
+
+    border-color: #414754;
+}
+
+
+/* ==========================================
+   DELETE OPTION / CONDITIONAL FIELD
+========================================== */
+
+.delivery-delete-option-btn,
+.delivery-delete-conditional-btn {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid #41272c;
+    border-radius: 7px;
+
+    background: #21181b;
+    color: #d9838c;
+
+    font-family: inherit;
+    font-size: 17px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.delivery-delete-option-btn:hover,
+.delivery-delete-conditional-btn:hover {
+    background: #321c21;
+
+    border-color: #593037;
+
+    color: #f19aa3;
+}
+
+
+/* ==========================================
+   ADD OPTION / CONDITIONAL FIELD BUTTONS
+========================================== */
+
+.delivery-add-option-btn,
+.add-conditional-field-btn {
+    margin-top: 10px;
+}
+
+
+/* ==========================================
+   GENERAL DELIVERY BUTTONS
+========================================== */
+
+.delivery-field-row button {
+    font-family: inherit;
+}
+
+
+/* ==========================================
+   DELIVERY FIELD EDIT BUTTON
+========================================== */
+
+.delivery-edit-btn {
+    flex-shrink: 0;
+}
+
+
+/* ==========================================
+   RESPONSIVE — TABLET
+========================================== */
+
+@media (max-width: 900px) {
+
+    .delivery-field-grid {
+        grid-template-columns:
+            1fr
+            1fr;
+    }
+
+    .conditional-field-grid {
+        grid-template-columns:
+            1fr
+            1fr;
+    }
+
+    .delivery-option-header {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            40px;
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE — MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .delivery-field-preview {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    .delivery-field-actions,
+    .delivery-edit-actions,
+    .delivery-preview-actions,
+    .delivery-field-editor-actions {
+        width: 100%;
+    }
+
+
+    .delivery-field-actions button,
+    .delivery-edit-actions button,
+    .delivery-preview-actions button,
+    .delivery-field-editor-actions button {
+        flex: 1;
+    }
+
+
+    .delivery-field-editor {
+        grid-template-columns: 1fr;
+    }
+
+
+    .delivery-field-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .conditional-field-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .admin-action-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .admin-action-btn {
+        width: 100%;
+    }
+
+
+    .delivery-option-row {
+        padding: 12px;
+    }
+
+
+    .conditional-field-row {
+        padding: 12px;
+    }
+
+
+    /* Stack option label/value on small screens */
+
+    .delivery-option-header {
+        grid-template-columns: 1fr;
+    }
+
+
+    .delivery-option-header .delete-option-btn {
+        width: 100%;
+    }
+
+}

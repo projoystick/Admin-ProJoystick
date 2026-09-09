@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Orders — PROJOYSTICK Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="../../css/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../css/admin-orders.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         ADMIN NAVBAR
+    =========================================== -->
+
+    <header class="admin-navbar">
+
+        <a
+            href="../../index.html"
+            class="admin-logo"
+        >
+            <span>◆</span>
+            PRO<span>JOYSTICK</span>
+            <small>ADMIN</small>
+        </a>
+
+
+        <div class="admin-nav-right">
+
+            <span id="adminUsername">
+                Loading...
+            </span>
+
+            <button
+                type="button"
+                id="adminLogout"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         ADMIN LAYOUT
+    =========================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- ======================================
+             SIDEBAR
+        ======================================= -->
+
+        <aside class="admin-sidebar">
+
+
+            <a
+                href="../index.html"
+                class="admin-menu"
+            >
+                <span>▦</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="./games.html"
+                class="admin-menu"
+            >
+                <span>🎮</span>
+                <span>Games</span>
+            </a>
+
+
+            <a
+                href="./products.html"
+                class="admin-menu"
+            >
+                <span>◈</span>
+                <span>Products</span>
+            </a>
+
+
+            <a
+                href="./orders.html"
+                class="admin-menu active"
+            >
+                <span>📦</span>
+                <span>Orders</span>
+            </a>
+
+
+            <a
+                href="./users.html"
+                class="admin-menu"
+            >
+                <span>👥</span>
+                <span>Users</span>
+            </a>
+
+            <a
+                href="./coins.html"
+                class="admin-menu"
+                aria-current="page"
+            >
+
+                <span>🪙</span>
+
+                <span>
+                    Fast Coins
+                </span>
+
+            </a>
+
+
+            <div class="admin-sidebar-divider"></div>
+
+
+            <a
+                href="../../index.html"
+                class="admin-menu"
+            >
+                <span>↗</span>
+                <span>View Store</span>
+            </a>
+
+
+        </aside>
+
+
+
+        <!-- ======================================
+             MAIN CONTENT
+        ======================================= -->
+
+        <main class="admin-main">
+
+
+            <!-- ==================================
+                 ORDERS
+            =================================== -->
+
+            <section
+                class="admin-section active"
+                id="ordersSection"
+            >
+
+
+                <!-- ==================================
+                     ORDER FILTERS
+                =================================== -->
+
+                <div class="admin-section-header">
+
+                    <div class="admin-order-filters">
+
+                        <select
+                            id="orderStatusFilter"
+                            aria-label="Filter orders by status"
+                        >
+
+                            <option value="all">
+                                All Orders
+                            </option>
+
+                            <option value="pending">
+                                Pending
+                            </option>
+
+                            <option value="paid">
+                                Paid
+                            </option>
+
+                            <option value="processing">
+                                Processing
+                            </option>
+
+                            <option value="completed">
+                                Completed
+                            </option>
+
+                            <option value="cancelled">
+                                Cancelled
+                            </option>
+
+                        </select>
+
+
+                        <button
+                            type="button"
+                            id="refreshOrdersBtn"
+                            class="admin-secondary-btn"
+                        >
+                            Refresh
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     LOADING
+                =================================== -->
+
+                <div
+                    id="ordersLoading"
+                    class="admin-loading"
+                    style="display: none;"
+                >
+                    Loading orders...
+                </div>
+
+
+
+                <!-- ==================================
+                     ORDERS TABLE
+                =================================== -->
+
+                <div class="admin-table-card">
+
+                    <div class="admin-table-wrapper">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Order ID
+                                    </th>
+
+                                    <th>
+                                        Customer
+                                    </th>
+
+                                    <th>
+                                        Items
+                                    </th>
+
+                                    <th>
+                                        Total
+                                    </th>
+
+                                    <th>
+                                        Payment
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Date
+                                    </th>
+
+                                    <th>
+                                        Actions
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="ordersTableBody">
+
+                                <tr>
+
+                                    <td
+                                        colspan="8"
+                                        class="admin-table-empty"
+                                    >
+                                        Loading orders...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ==========================================
+         ORDER DETAILS MODAL
+    =========================================== -->
+
+    <div
+        id="orderModal"
+        class="admin-modal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="admin-modal-content order-modal-content"
+        >
+
+
+            <!-- ==================================
+                 MODAL HEADER
+            =================================== -->
+
+            <div class="admin-modal-header">
+
+                <div>
+
+                    <span class="admin-label">
+                        ORDER DETAILS
+                    </span>
+
+                    <h2>
+                        Order
+                    </h2>
+
+                    <p id="orderModalSubtitle">
+                        View customer and payment information.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="closeOrderModal"
+                    class="admin-modal-close"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 ORDER DETAILS
+            =================================== -->
+
+            <div class="admin-form">
+
+
+                <!-- ==================================
+                     ORDER INFORMATION
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <span class="admin-label">
+                            ORDER
+                        </span>
+
+                        <h3>
+                            Order Information
+                        </h3>
+
+                    </div>
+
+
+                    <div class="admin-order-details">
+
+
+                        <div class="admin-order-detail">
+
+                            <small>
+                                Order ID
+                            </small>
+
+                            <strong id="detailOrderId">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="admin-order-detail">
+
+                            <small>
+                                Order Date
+                            </small>
+
+                            <strong id="detailOrderDate">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="admin-order-detail">
+
+                            <small>
+                                Payment Status
+                            </small>
+
+                            <strong id="detailPaymentStatus">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="admin-order-detail">
+
+                            <small>
+                                Order Status
+                            </small>
+
+                            <strong id="detailOrderStatus">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="admin-order-detail">
+
+                            <small>
+                                Total Amount
+                            </small>
+
+                            <strong id="detailOrderTotal">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     CUSTOMER INFORMATION
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <span class="admin-label">
+                            CUSTOMER
+                        </span>
+
+                        <h3>
+                            Customer Information
+                        </h3>
+
+                    </div>
+
+
+                    <div class="admin-order-details">
+
+
+                        <div class="admin-order-detail">
+
+                            <small>
+                                Name
+                            </small>
+
+                            <strong id="detailCustomerName">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="admin-order-detail">
+
+                            <small>
+                                Email
+                            </small>
+
+                            <strong id="detailCustomerEmail">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     CUSTOMER MESSAGE
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <span class="admin-label">
+                            MESSAGE
+                        </span>
+
+                        <h3>
+                            Customer Message
+                        </h3>
+
+                    </div>
+
+
+                    <div class="admin-order-message-editor">
+
+                        <textarea
+                            id="customerMessage"
+                            rows="4"
+                            placeholder="Write a message for the customer..."
+                        ></textarea>
+
+
+                        <button
+                            type="button"
+                            id="saveCustomerMessageBtn"
+                            class="admin-btn admin-btn-primary"
+                        >
+                            Save Message
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     ORDER ITEMS
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <span class="admin-label">
+                            PRODUCTS
+                        </span>
+
+                        <h3>
+                            Order Items
+                        </h3>
+
+                    </div>
+
+
+                    <div
+                        id="orderItemsContainer"
+                        class="admin-order-items"
+                    >
+
+                        <p>
+                            No items available.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     DELIVERY INFORMATION
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <span class="admin-label">
+                            DELIVERY
+                        </span>
+
+                        <h3>
+                            Delivery Information
+                        </h3>
+
+                    </div>
+
+
+                    <div
+                        id="deliveryInformationContainer"
+                        class="admin-order-items"
+                    >
+
+                        <p>
+                            No delivery information available.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     PAYMENT INFORMATION
+                =================================== -->
+
+                <div class="admin-form-section">
+
+                    <div class="admin-form-section-title">
+
+                        <span class="admin-label">
+                            PAYMENT
+                        </span>
+
+                        <h3>
+                            Payment Information
+                        </h3>
+
+                    </div>
+
+
+                    <div class="admin-order-details">
+
+
+                        <div class="admin-order-detail">
+
+                            <small>
+                                Payment Method
+                            </small>
+
+                            <strong id="detailPaymentMethod">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="admin-order-detail">
+
+                            <small>
+                                Transaction ID
+                            </small>
+
+                            <strong id="detailTransactionId">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     ORDER STATUS CONTROLS
+                =================================== -->
+
+                <div
+                    id="orderStatusControls"
+                    class="admin-order-status-controls"
+                >
+
+                    <!-- JavaScript fills the buttons -->
+
+                </div>
+
+
+
+                <!-- ==================================
+                     MODAL FOOTER
+                =================================== -->
+
+                <div class="admin-modal-footer">
+
+                    <button
+                        type="button"
+                        id="cancelOrderBtn"
+                        class="admin-secondary-btn"
+                    >
+                        Close
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         ADMIN AUTHENTICATION
+    =========================================== -->
+
+    <script
+        type="module"
+        src="../../js/admin-auth.js?v=20260831"
+    ></script>
+
+
+
+    <!-- ==========================================
+         ORDERS JAVASCRIPT
+    =========================================== -->
+
+    <script
+        type="module"
+        src="../../js/admin-orders.js?v=20260901"
+    ></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,282 @@
+/* ==========================================
+   GAMEVAULT ADMIN — GAMES PAGE
+   Game-Specific Styles
+========================================== */
+
+
+/* ==========================================
+   GAME CELL
+========================================== */
+
+
+
+
+.admin-game-cell {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    min-width: 230px;
+}
+
+.admin-game-image {
+    position: relative;
+
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    background: #20242e;
+}
+
+.admin-game-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.admin-game-image-fallback {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #777f91;
+
+    font-size: 20px;
+}
+
+.admin-game-info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.admin-game-info strong {
+    overflow: hidden;
+
+    color: #f3f5f9;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.admin-status {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.admin-status.active {
+    background: #15281f;
+    color: #67d59a;
+}
+
+.admin-status.inactive {
+    background: #28221b;
+    color: #d5a66a;
+}
+
+
+/* ==========================================
+   POPULAR BADGE
+========================================== */
+
+.admin-popular-badge {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    padding: 3px 7px;
+
+    border-radius: 999px;
+
+    background: #282216;
+    color: #e0b56a;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   ACTION BUTTONS
+========================================== */
+
+.admin-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.admin-action-btn {
+    padding: 7px 11px;
+
+    border: 1px solid #303540;
+    border-radius: 7px;
+
+    background: #181b22;
+    color: #bfc4ce;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.admin-action-btn:hover {
+    background: #222630;
+    border-color: #414754;
+    color: #ffffff;
+}
+
+.admin-action-btn.delete {
+    color: #d9838c;
+    border-color: #41272c;
+    background: #21181b;
+}
+
+.admin-action-btn.delete:hover {
+    background: #321c21;
+    border-color: #593037;
+    color: #f19aa3;
+}
+
+
+/* ==========================================
+   GAME MODAL CONTENT
+========================================== */
+
+.game-modal-content {
+    width: min(850px, 100%);
+}
+
+
+/* ==========================================
+   DELIVERY FIELDS
+========================================== */
+
+.delivery-fields-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.delivery-field-item {
+    padding: 16px;
+
+    border: 1px solid #292e38;
+    border-radius: 10px;
+
+    background: #15181f;
+}
+
+.delivery-field-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+.delivery-field-header strong {
+    color: #e1e5eb;
+
+    font-size: 13px;
+}
+
+.delivery-field-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        150px
+        minmax(180px, 0.8fr);
+
+    gap: 12px;
+}
+
+.delivery-field-grid .admin-form-group {
+    margin: 0;
+}
+
+
+/* ==========================================
+   RESPONSIVE — TABLET
+========================================== */
+
+@media (max-width: 900px) {
+
+    .delivery-field-grid {
+        grid-template-columns:
+            1fr
+            1fr;
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE — MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .delivery-field-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 420px) {
+
+    .admin-action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-action-btn {
+        width: 100%;
+    }
+
+}
