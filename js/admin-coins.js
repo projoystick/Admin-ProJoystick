@@ -52,6 +52,19 @@ const dailyLoginMin =
 const dailyLoginMax =
     document.getElementById("dailyLoginMax");
 
+/*
+   NEW:
+   Admin controlled Fast Coin conversion rate.
+
+   Example:
+   coinsPerRupee = 10
+
+   Means:
+   ₹1 = 10 Fast Coins
+*/
+const coinsPerRupee =
+    document.getElementById("coinsPerRupee");
+
 
 /* ==========================================
    PROMOTION ELEMENTS
@@ -109,7 +122,15 @@ const DEFAULT_SETTINGS = {
     accountCreationCoins: 100,
     firstPurchaseCoins: 250,
     dailyLoginMin: 10,
-    dailyLoginMax: 50
+    dailyLoginMax: 50,
+
+    /*
+       NEW:
+       Default Fast Coin conversion.
+
+       ₹1 = 10 Fast Coins
+    */
+    coinsPerRupee: 10
 };
 
 
@@ -202,48 +223,98 @@ async function loadCoinSettings() {
             dailyLoginMax:
                 Number(
                     data.dailyLoginMax
+                ),
+
+            /*
+               NEW:
+               Read Admin conversion rate.
+            */
+            coinsPerRupee:
+                Number(
+                    data.coinsPerRupee
                 )
 
         };
 
+
+        /* --------------------------------------
+           VALIDATE ACCOUNT CREATION COINS
+        -------------------------------------- */
 
         if (
             !Number.isFinite(
                 settings.accountCreationCoins
             )
         ) {
+
             settings.accountCreationCoins =
                 DEFAULT_SETTINGS.accountCreationCoins;
+
         }
 
+
+        /* --------------------------------------
+           VALIDATE FIRST PURCHASE COINS
+        -------------------------------------- */
 
         if (
             !Number.isFinite(
                 settings.firstPurchaseCoins
             )
         ) {
+
             settings.firstPurchaseCoins =
                 DEFAULT_SETTINGS.firstPurchaseCoins;
+
         }
 
+
+        /* --------------------------------------
+           VALIDATE DAILY LOGIN MIN
+        -------------------------------------- */
 
         if (
             !Number.isFinite(
                 settings.dailyLoginMin
             )
         ) {
+
             settings.dailyLoginMin =
                 DEFAULT_SETTINGS.dailyLoginMin;
+
         }
 
+
+        /* --------------------------------------
+           VALIDATE DAILY LOGIN MAX
+        -------------------------------------- */
 
         if (
             !Number.isFinite(
                 settings.dailyLoginMax
             )
         ) {
+
             settings.dailyLoginMax =
                 DEFAULT_SETTINGS.dailyLoginMax;
+
+        }
+
+
+        /* --------------------------------------
+           VALIDATE FAST COIN CONVERSION
+        -------------------------------------- */
+
+        if (
+            !Number.isFinite(
+                settings.coinsPerRupee
+            ) ||
+            settings.coinsPerRupee <= 0
+        ) {
+
+            settings.coinsPerRupee =
+                DEFAULT_SETTINGS.coinsPerRupee;
+
         }
 
 
@@ -314,6 +385,19 @@ function fillSettingsForm(settings) {
 
         dailyLoginMax.value =
             settings.dailyLoginMax;
+
+    }
+
+
+    /*
+       NEW:
+       Fill Fast Coin conversion rate.
+    */
+
+    if (coinsPerRupee) {
+
+        coinsPerRupee.value =
+            settings.coinsPerRupee;
 
     }
 
@@ -461,6 +545,15 @@ function getSettingsFormData() {
         dailyLoginMax:
             Number(
                 dailyLoginMax?.value
+            ),
+
+        /*
+           NEW:
+           Read Admin conversion rate.
+        */
+        coinsPerRupee:
+            Number(
+                coinsPerRupee?.value
             )
 
     };
@@ -542,6 +635,34 @@ function validateSettings(settings) {
     }
 
 
+    /*
+       NEW:
+       Validate Fast Coin conversion.
+
+       We require a positive whole number.
+
+       Examples:
+       1
+       5
+       10
+       20
+       100
+    */
+
+    if (
+        !Number.isInteger(
+            settings.coinsPerRupee
+        ) ||
+        settings.coinsPerRupee <= 0
+    ) {
+
+        return (
+            "Fast Coin conversion must be a whole number greater than 0."
+        );
+
+    }
+
+
     return null;
 
 }
@@ -560,6 +681,25 @@ async function saveCoinSettings() {
 
     const settings =
         getSettingsFormData();
+
+
+    /*
+       If the new HTML field hasn't been added yet,
+       use the existing/default value rather than
+       accidentally saving NaN.
+    */
+
+    if (
+        !coinsPerRupee &&
+        !Number.isFinite(
+            settings.coinsPerRupee
+        )
+    ) {
+
+        settings.coinsPerRupee =
+            DEFAULT_SETTINGS.coinsPerRupee;
+
+    }
 
 
     const validationError =
@@ -988,7 +1128,6 @@ function createPromotionRow(
 ========================================== */
 
 function attachPromotionActions() {
-
 
     document
         .querySelectorAll(
