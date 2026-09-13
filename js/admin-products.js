@@ -1476,13 +1476,15 @@ productForm?.addEventListener(
         }
 
 
-        if (!amount) {
-
-            alert(
-                "Please enter the amount."
-            );
-
-            return;
+        if ( 
+            type === "currency" && !amount 
+        ) { 
+            alert( 
+                    "Please enter the amount for currency." 
+                ); 
+                
+                return; 
+            
         }
 
 
