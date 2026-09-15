@@ -1,0 +1,33 @@
+{
+  "rewrites": [
+    {
+      "source": "/home",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/coinConfig",
+      "destination": "/coins.html"
+    },
+    {
+      "source": "/gameConfig",
+      "destination": "/game.html"
+    },
+    {
+      "source": "/loginConfig",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/ordersConfig",
+      "destination": "/orders.html"
+    },
+    {
+      "source": "/ProductsConfig",
+      "destination": "/Products.html"
+    },
+    {
+      "source": "/usersConfig",
+      "destination": "/uesers.html"
+    }
+  ],
+  "cleanUrls": true
+}

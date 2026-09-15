@@ -523,6 +523,7 @@ function getProductType(
             .toLowerCase();
 
 
+
     if (
         type === "currency" ||
         type === "coin" ||
@@ -533,7 +534,18 @@ function getProductType(
     }
 
 
-    return "product";
+
+    if (
+        type === "item" ||
+        type === "product"
+    ) {
+
+        return "item";
+    }
+
+
+
+    return "item";
 }
 
 
@@ -581,7 +593,7 @@ function renderProducts() {
                     product =>
                         getProductType(
                             product
-                        ) === "product"
+                        ) === "item"
                 );
 
 
@@ -668,7 +680,7 @@ function renderProducts() {
                 product =>
                     getProductType(
                         product
-                    ) === "product"
+                    ) === "item"
             );
 
 
