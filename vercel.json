@@ -29,5 +29,5 @@
       "destination": "/uesers.html"
     }
   ],
-  "cleanUrls": true
+  "cleanUrls": false
 }
